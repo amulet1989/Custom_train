@@ -11,6 +11,27 @@ def main():
     )
 
     parser.add_argument(
+        "--not_download",
+        default=True,
+        action="store_false",
+        help="Si se desea descargar el dataset",
+    )
+
+    parser.add_argument(
+        "--not_augment",
+        default=True,
+        action="store_false",
+        help="Si se desea aplicar las transformaciones a los datos",
+    )
+
+    parser.add_argument(
+        "--not_train",
+        default=True,
+        action="store_false",
+        help="Si no desesa entrenar el modelo",
+    )
+
+    parser.add_argument(
         "--data_zip_path",
         default=config.DATA_ZIP_PATH,
         type=str,
@@ -41,31 +62,35 @@ def main():
     args = parser.parse_args()
 
     # Download datset
-    print("downloading datset")
-    download.download_from_local(args.data_zip_path, args.dataset_dir_path)
+    if args.not_download:
+        # download.download_from_local(args.data_zip_path, args.dataset_dir_path)
+        download.download_from_s3()
 
-    # Augment data
-    print("augmenting data")
-    data_augmentation.augment_dataset(
-        os.path.join(args.dataset_dir_path, "Merged_Dataset"),
-        args.augmented_dir_path,
-        augmented_for=args.aumented_for,
-    )
+        # Augment data
+        if args.not_augment:
+            print("augmenting data")
+            data_augmentation.augment_dataset(
+                os.path.join(args.dataset_dir_path, "Merged_Dataset"),
+                args.augmented_dir_path,
+                augmented_for=args.aumented_for,
+            )
 
     # Train the model
     # Read API key from the .environment variables
-    api_key = os.environ.get("COMET_API_KEY")
+    if args.not_train:
+        api_key = os.environ.get("COMET_API_KEY")
 
-    comet_ml.init(api_key=api_key)
+        comet_ml.init(api_key=api_key)
 
-    model = YOLO("yolov5su.pt")
-    model.train(
-        data=config.DATA_YAML_PATH,
-        epochs=3,
-        batch=-1,
-        project="MiniGO",
-        name="YoloV5su_1",
-    )
+        model = YOLO("yolov5su.yaml")
+
+        model.train(
+            data=config.DATA_YAML_PATH,
+            epochs=3,
+            batch=-1,
+            project="MiniGO",
+            name="YoloV5su_",
+        )
 
 
 if __name__ == "__main__":
