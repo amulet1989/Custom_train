@@ -86,10 +86,10 @@ def main():
 
         model.train(
             data=config.DATA_YAML_PATH,
-            epochs=10,
+            epochs=2,
             batch=-1,
             project="MiniGO",
-            name="YoloV5su_",
+            name="Yolov5_",
         )
 
 
