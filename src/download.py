@@ -59,7 +59,7 @@ def download_from_s3(
     update_data_yaml(
         os.path.join(local_dir, folder_name, "data.yaml"),
         os.path.join(local_dir, folder_name, "train"),
-        os.path.join(local_dir, folder_name, "val"),
+        os.path.join(local_dir, folder_name, "valid"),
     )
     logging.info(f"Downloaded {s3_file} from S3")
 
@@ -81,7 +81,7 @@ def download_from_local(input_dir: str, output_dir: str):
     update_data_yaml(
         os.path.join(output_dir, folder_name, "data.yaml"),
         os.path.join(output_dir, folder_name, "train"),
-        os.path.join(output_dir, folder_name, "val"),
+        os.path.join(output_dir, folder_name, "valid"),
     )
 
     logging.info(f"Downloaded {input_dir} at {output_dir}")

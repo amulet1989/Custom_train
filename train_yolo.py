@@ -86,7 +86,7 @@ def main():
 
         model.train(
             data=config.DATA_YAML_PATH,
-            epochs=3,
+            epochs=10,
             batch=-1,
             project="MiniGO",
             name="YoloV5su_",
