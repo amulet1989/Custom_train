@@ -86,8 +86,8 @@ def main():
         model = RTDETR("rtdetr-l.pt")
 
         model.train(
-            data=config.DATA_YAML_PATH,
-            epochs=2,
+            data=os.path.join(args.dataset_dir_path, "Augmented_Dataset", "data.yaml"),
+            epochs=50,
             batch=-1,
             project="MiniGO",
             name="REDETR_",
