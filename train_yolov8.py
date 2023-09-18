@@ -86,9 +86,8 @@ def main():
 
         model.train(
             data=config.DATA_YAML_PATH,
-            epochs=2,
-            batch=-1,
-            project="MiniGO",
+            cfg="cfg.y8s.yaml",
+            project="MiniGO_Yolov8s",
             name="Yolov8_",
         )
 

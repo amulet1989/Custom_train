@@ -87,10 +87,9 @@ def main():
 
         model.train(
             data=os.path.join(args.dataset_dir_path, "Augmented_Dataset", "data.yaml"),
-            epochs=50,
-            batch=-1,
-            project="MiniGO",
-            name="REDETR_",
+            cfg="cfg_rtdetr.yaml",
+            project="MiniGO_DETR",
+            name="DETR_",
         )
 
 
