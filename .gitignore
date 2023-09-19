@@ -178,5 +178,6 @@ pyrightconfig.json
 dataset/
 runs/
 MiniGO
+private/
 *.pt
 *.sh
