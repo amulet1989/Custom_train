@@ -85,8 +85,8 @@ def main():
         model = YOLO("yolov5su.yaml")
 
         model.train(
-            data=config.DATA_YAML_PATH,
-            cfg="cfg.yaml",
+            data=os.path.join(args.dataset_dir_path, "Augmented_Dataset", "data.yaml"),
+            cfg="cfgs/cfg_y5s.yaml",
             project="MiniGO_Yolov5",
             name="Yolov5_",
         )

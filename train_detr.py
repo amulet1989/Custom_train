@@ -83,11 +83,11 @@ def main():
         comet_ml.init(api_key=api_key)
 
         # model = YOLO("yolov5su.yaml")
-        model = RTDETR("rtdetr-l.pt")
+        model = RTDETR("cfg/rtdetr-l.pt")
 
         model.train(
             data=os.path.join(args.dataset_dir_path, "Augmented_Dataset", "data.yaml"),
-            cfg="cfg_rtdetr.yaml",
+            cfg="cfgs/cfg_rtdetr.yaml",
             project="MiniGO_DETR",
             name="DETR_",
         )
