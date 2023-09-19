@@ -179,3 +179,4 @@ dataset/
 runs/
 MiniGO
 *.pt
+*.sh
