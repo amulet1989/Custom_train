@@ -82,7 +82,7 @@ def main():
 
         comet_ml.init(api_key=api_key)
 
-        model = YOLO("yolov8m.pt")
+        model = YOLO("yolov8s.pt")
 
         model.train(
             data=os.path.join(args.dataset_dir_path, "Augmented_Dataset", "data.yaml"),
