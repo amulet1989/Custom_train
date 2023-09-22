@@ -8,9 +8,9 @@ mode: train  # (str) YOLO mode, i.e. train, val, predict, export, track, benchma
 model:  # (str, optional) path to model file, i.e. yolov8n.pt, yolov8n.yaml
 data:  # (str, optional) path to data file, i.e. coco128.yaml
 epochs: 100  # (int) number of epochs to train for
-patience: 50  # (int) epochs to wait for no observable improvement for early stopping of training
-batch: 16  # (int) number of images per batch (-1 for AutoBatch)
-imgsz: 640  # (int | list) input images size as int for train and val modes, or list[w,h] for predict and export modes
+patience: 20  # (int) epochs to wait for no observable improvement for early stopping of training
+batch: -1  # (int) number of images per batch (-1 for AutoBatch)
+imgsz: 704  # (int | list) input images size as int for train and val modes, or list[w,h] for predict and export modes
 save: True  # (bool) save train checkpoints and predict results
 save_period: -1 # (int) Save checkpoint every x epochs (disabled if < 1)
 cache: False  # (bool) True/ram, disk or False. Use cache for data loading
@@ -46,7 +46,7 @@ save_json: False  # (bool) save results to JSON file
 save_hybrid: False  # (bool) save hybrid version of labels (labels + additional predictions)
 conf: 0.8 # (float, optional) object confidence threshold for detection (default 0.25 predict, 0.001 val)
 iou: 0.7  # (float) intersection over union (IoU) threshold for NMS
-max_det: 30  # (int) maximum number of detections per image
+max_det: 300  # (int) maximum number of detections per image
 half: False  # (bool) use half precision (FP16)
 dnn: False  # (bool) use OpenCV DNN for ONNX inference
 plots: True  # (bool) save plots during train/val
@@ -105,7 +105,7 @@ shear: 0.0  # (float) image shear (+/- deg)
 perspective: 0.0  # (float) image perspective (+/- fraction), range 0-0.001
 flipud: 0.0  # (float) image flip up-down (probability)
 fliplr: 0.5  # (float) image flip left-right (probability)
-mosaic: 1.0  # (float) image mosaic (probability)
+mosaic: 0.0  # (float) image mosaic (probability)
 mixup: 0.0  # (float) image mixup (probability)
 copy_paste: 0.0  # (float) segment copy-paste (probability)
 
