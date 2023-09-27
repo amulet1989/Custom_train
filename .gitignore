@@ -180,5 +180,6 @@ runs/
 MiniGO
 private/
 wandb/
+GestionFila_Yolov8m/
 *.pt
 *.sh
