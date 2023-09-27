@@ -92,10 +92,10 @@ def main():
 
         result_grid = model.tune(
             data=os.path.join(args.dataset_dir_path, "Augmented_Dataset", "data.yaml"),
+            cfg="cfgs/cfg_tune.yaml"
             project="YoloV8m_gest_fila",
             use_ray=True,
             iterations=10,
-            epochs=50,
         )
 
 
