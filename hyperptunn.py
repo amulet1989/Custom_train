@@ -88,12 +88,12 @@ def main():
         # Iniciar sesión en W&B
         wandb.login(key=api_key)
 
-        model = YOLO("yolov8s.pt")
+        model = YOLO("trained/yolov8m_6cam_augm.pt")
 
         result_grid = model.tune(
             data=os.path.join(args.dataset_dir_path, "Merged_Dataset", "data.yaml"),
             cfg="cfgs/cfg_tune.yaml",
-            project="YoloV8m_gest_fila",
+            project="Gestion_fila_Yolov8m_6cam",
             use_ray=True,
             iterations=10,
         )
