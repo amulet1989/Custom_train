@@ -1,4 +1,4 @@
-import comet_ml
+# import comet_ml
 import wandb
 from ultralytics import YOLO
 import argparse
