@@ -92,10 +92,10 @@ def main():
 
         result_grid = model.tune(
             data=os.path.join(args.dataset_dir_path, "Merged_Dataset", "data.yaml"),
-            cfg="cfgs/cfg_tune.yaml",
-            project="Gestion_fila_Yolov8m_6cam",
+            # cfg="cfgs/cfg_tune.yaml",
+            # project="Gestion_fila_Yolov8m_6cam",
             use_ray=True,
-            iterations=10,
+            # iterations=10,
         )
 
 
