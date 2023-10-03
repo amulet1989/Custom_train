@@ -86,7 +86,7 @@ def main():
 
         model.train(
             data=os.path.join(args.dataset_dir_path, "Augmented_Dataset", "data.yaml"),
-            cfg="cfgs/cfg_not_aument.yaml",
+            cfg="cfgs/cfg_not_augment.yaml",
             project="Gestion_fila_Yolov8m_6cam",
             name="Yolov8_",
         )
