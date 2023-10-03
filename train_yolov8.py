@@ -82,9 +82,7 @@ def main():
 
         comet_ml.init(api_key=api_key)
 
-        model = YOLO(
-            "trained/yolov8m_6cam_augm.pt"
-        )  # yolov8m trained/yolov8m_6cam_augm.
+        model = YOLO("yolov8m.pt")  # yolov8m trained/yolov8m_6cam_augm.
 
         model.train(
             data=os.path.join(

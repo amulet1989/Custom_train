@@ -7,7 +7,7 @@ mode: train  # (str) YOLO mode, i.e. train, val, predict, export, track, benchma
 # Train settings -------------------------------------------------------------------------------------------------------
 model:  # (str, optional) path to model file, i.e. yolov8n.pt, yolov8n.yaml
 data:  # (str, optional) path to data file, i.e. coco128.yaml
-epochs: 50  # (int) number of epochs to train for
+epochs: 100  # (int) number of epochs to train for
 patience: 10  # (int) epochs to wait for no observable improvement for early stopping of training
 batch: 20  # (int) number of images per batch (-1 for AutoBatch)
 imgsz: 704  # (int | list) input images size as int for train and val modes, or list[w,h] for predict and export modes
@@ -20,7 +20,7 @@ project:  # (str, optional) project name
 name:  # (str, optional) experiment name, results saved to 'project/name' directory
 exist_ok: False  # (bool) whether to overwrite existing experiment
 pretrained: True  # (bool | str) whether to use a pretrained model (bool) or a model to load weights from (str)
-optimizer: Adam # (str) optimizer to use, choices=[SGD, Adam, Adamax, AdamW, NAdam, RAdam, RMSProp, auto]
+optimizer: auto # (str) optimizer to use, choices=[SGD, Adam, Adamax, AdamW, NAdam, RAdam, RMSProp, auto]
 verbose: True  # (bool) whether to print verbose output
 seed: 0  # (int) random seed for reproducibility
 deterministic: True  # (bool) whether to enable deterministic mode
@@ -81,8 +81,8 @@ workspace: 4  # (int) TensorRT: workspace size (GB)
 nms: False  # (bool) CoreML: add NMS
 
 # Hyperparameters ------------------------------------------------------------------------------------------------------
-lr0: 0.0001  # (float) initial learning rate (i.e. SGD=1E-2, Adam=1E-3)
-lrf: 0.001  # (float) final learning rate (lr0 * lrf)
+lr0: 0.01  # (float) initial learning rate (i.e. SGD=1E-2, Adam=1E-3)
+lrf: 0.01  # (float) final learning rate (lr0 * lrf)
 momentum: 0.937  # (float) SGD momentum/Adam beta1
 weight_decay: 0.0005  # (float) optimizer weight decay 5e-4
 warmup_epochs: 3.0  # (float) warmup epochs (fractions ok)
