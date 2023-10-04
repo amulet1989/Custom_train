@@ -7,9 +7,9 @@ DATASET_DIR_PATH = os.path.join(HOME, "dataset")
 
 DATA_MERGED_DIR_PATH = os.path.join(DATASET_DIR_PATH, "Merged_Dataset")  # No
 
-DATA_AUMENTED_DIR_PATH = os.path.join(DATASET_DIR_PATH, "Merged_Dataset")
+DATA_AUMENTED_DIR_PATH = os.path.join(DATASET_DIR_PATH, "Augmented_Dataset")
 
-DATA_YAML_PATH = os.path.join(DATASET_DIR_PATH, "Merged_Dataset", "data.yaml")
+DATA_YAML_PATH = os.path.join(DATASET_DIR_PATH, "Augmented_Dataset", "data.yaml")
 
 DATA_ZIP_PATH = os.path.join(DATASET_DIR_PATH, "data.zip")
 

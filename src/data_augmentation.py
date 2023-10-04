@@ -88,8 +88,8 @@ def apply_aug(
     transformed_file_name,
     classes,
     val=False,
-    height=480,
-    width=640,
+    height=576,
+    width=704,
 ):
     if val:
         transform = A.Compose(
@@ -112,14 +112,32 @@ def apply_aug(
                     height=height,
                     width=width,
                 ),
-                A.HorizontalFlip(p=0.5),
-                A.VerticalFlip(p=0.5),
-                A.RandomBrightnessContrast(p=0.5),
-                A.RandomBrightnessContrast(brightness_limit=0.2, contrast_limit=0),
-                A.CLAHE(clip_limit=(0, 1), tile_grid_size=(8, 8), always_apply=True),
-                A.ShiftScaleRotate(
-                    shift_limit=0.0625, scale_limit=0, rotate_limit=10, p=0.5
+                A.HorizontalFlip(always_apply=False, p=0.5),
+                # A.VerticalFlip(p=0.5),
+                A.RandomBrightnessContrast(always_apply=False, p=0.3),
+                A.RandomBrightnessContrast(
+                    always_apply=False, brightness_limit=0.2, contrast_limit=0, p=0.3
                 ),
+                A.CLAHE(
+                    always_apply=False, clip_limit=(0, 1), tile_grid_size=(8, 8), p=0.3
+                ),
+                A.ShiftScaleRotate(
+                    always_apply=False,
+                    p=0.5,
+                    shift_limit_x=(-0.06, 0.06),
+                    shift_limit_y=(-0.06, 0.06),
+                    scale_limit=(-0.09999999999999998, 0.10000000000000009),
+                    rotate_limit=(-30, 30),
+                    interpolation=1,
+                    border_mode=2,
+                    value=(0, 0, 0),
+                    mask_value=None,
+                    rotate_method="largest_box",
+                ),
+                A.RandomToneCurve(always_apply=False, p=0.3, scale=0.1),
+                A.ChannelShuffle(always_apply=False, p=0.3),
+                # A.Blur(always_apply=False, p=0.3, blur_limit=(1, 3)),
+                # A.Downscale(always_apply=False, p=0.3, scale_min=0.5, scale_max=0.99),
             ],
             bbox_params=A.BboxParams(format="yolo"),
         )
