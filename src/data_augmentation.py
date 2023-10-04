@@ -223,7 +223,8 @@ def augment_dataset(input_path: str, output_path: str, augmented_for: int = 10) 
     imgs = os.listdir(inp_img_pth)
     logging.info("Generating train augmented images ...")
     for img_file in tqdm(imgs):
-        file_name = img_file.split(".")[0]
+        # file_name = img_file.split(".")[0]
+        file_name = os.path.splitext(img_file)[0]
         image = cv2.imread(os.path.join(inp_img_pth, img_file))
         lab_pth = os.path.join(inp_lab_pth, file_name + ".txt")
         album_bboxes = get_bboxes_list(lab_pth, CLASSES)
@@ -231,14 +232,7 @@ def augment_dataset(input_path: str, output_path: str, augmented_for: int = 10) 
         for i in range(augmented_for):
             aug_file_name = f"{file_name}_{transformed_file_name}_{i}"
             apply_aug(
-                image,
-                album_bboxes,
-                out_lab_pth,
-                out_img_pth,
-                aug_file_name,
-                CLASSES,
-                height=480,
-                width=640,
+                image, album_bboxes, out_lab_pth, out_img_pth, aug_file_name, CLASSES
             )
     logging.info("Data train augmentation ended ...")
 
@@ -246,7 +240,8 @@ def augment_dataset(input_path: str, output_path: str, augmented_for: int = 10) 
     imgs = os.listdir(inp_img_pth_valid)
     logging.info("Addjusting validation data  ...")
     for img_file in tqdm(imgs):
-        file_name = img_file.split(".")[0]
+        # file_name = img_file.split(".")[0]
+        file_name = os.path.splitext(img_file)[0]
         image = cv2.imread(os.path.join(inp_img_pth_valid, img_file))
         lab_pth = os.path.join(inp_lab_pth_valid, file_name + ".txt")
         album_bboxes = get_bboxes_list(lab_pth, CLASSES)
@@ -260,7 +255,5 @@ def augment_dataset(input_path: str, output_path: str, augmented_for: int = 10) 
             aug_file_name,
             CLASSES,
             val=True,
-            height=480,
-            width=640,
         )
     logging.info("Data augmentation ended ...")
