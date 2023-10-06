@@ -82,17 +82,15 @@ def main():
 
         comet_ml.init(api_key=api_key)
 
-        model = YOLO(
-            "Gestion_fila_Yolov8m_6cam/Yolov8_/weights/last.pt"
-        )  # yolov8m trained/yolov8m_6cam_augm.
+        model = YOLO("yolov8n.pt")  # yolov8m trained/yolov8m_6cam_augm.
 
         model.train(
             data=os.path.join(
                 args.dataset_dir_path, "Augmented_Dataset", "data.yaml"
             ),  # Merged_Dataset/Augmented_Dataset
-            cfg="cfgs/cfg_not_augment.yaml",
+            cfg="cfgs/cfg_y8s.yaml",
             project="Gestion_fila_Yolov8m_6cam",
-            name="Yolov8_",
+            name="Yolov8n_",
         )
 
 
