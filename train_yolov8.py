@@ -112,7 +112,7 @@ def main():
         model.train(
             data=os.path.join(
                 args.dataset_dir_path,
-                "Gestion_de_filas_4_camaras_v1i_yolov8",
+                args.dataset_name,
                 "data.yaml",
             ),  # Merged_Dataset/Augmented_Dataset - "Gestion_de_filas_4_camaras_v1i_yolov8",
             cfg="cfgs/cfg_y8s.yaml",
