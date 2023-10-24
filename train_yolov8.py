@@ -46,6 +46,27 @@ def main():
     )
 
     parser.add_argument(
+        "--dataset_name",
+        default="Merged_Dataset",
+        type=str,
+        help="Nombre del Datset de entrenamiento",
+    )
+
+    parser.add_argument(
+        "--bucket_name",
+        default=config.AWS_BUCKET,
+        type=str,
+        help="Nombre del bucket en AWS",
+    )
+
+    parser.add_argument(
+        "--bucket_path",
+        default=config.AWS_FILE_PATH,
+        type=str,
+        help="Path del dataset dentro del bucket en AWS",
+    )
+
+    parser.add_argument(
         "--augmented_dir_path",
         default=config.DATA_AUMENTED_DIR_PATH,
         type=str,
@@ -64,13 +85,15 @@ def main():
     # Download datset
     if args.not_download:
         # download.download_from_local(args.data_zip_path, args.dataset_dir_path)
-        download.download_from_s3()
+        download.download_from_s3(
+            bucket_name=args.bucket_name, bucket_path=args.bucket_path
+        )
 
         # Augment data
         if args.not_augment:
             print("augmenting data")
             data_augmentation.augment_dataset(
-                os.path.join(args.dataset_dir_path, "Merged_Dataset"),
+                os.path.join(args.dataset_dir_path, args.dataset_name),
                 args.augmented_dir_path,
                 augmented_for=args.aumented_for,
             )

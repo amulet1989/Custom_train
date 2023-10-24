@@ -181,7 +181,6 @@ MiniGO
 private/
 wandb/
 GestionFila_Yolov8m/
-*.pt
+#*.pt
 *.sh
 .cometml-runs
-trained/
