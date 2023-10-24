@@ -183,3 +183,5 @@ wandb/
 GestionFila_Yolov8m/
 *.pt
 *.sh
+.cometml-runs
+trained/
