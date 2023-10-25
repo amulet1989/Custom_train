@@ -115,7 +115,7 @@ def main():
                 args.dataset_name,
                 "data.yaml",
             ),
-            cfg="cfgs/cfg_rtdetr.yaml",
+            # cfg="cfgs/cfg_rtdetr.yaml",
             project="Gestion_fila__DETR_4_cam",
             name="DETR_",
         )
