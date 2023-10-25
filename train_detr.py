@@ -116,6 +116,7 @@ def main():
                 "data.yaml",
             ),
             # cfg="cfgs/cfg_rtdetr.yaml",
+            imgsz=704,
             project="Gestion_fila__DETR_4_cam",
             name="DETR_",
         )
