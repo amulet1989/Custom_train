@@ -117,7 +117,7 @@ def main():
             ),  # Merged_Dataset/Augmented_Dataset - "Gestion_de_filas_4_camaras_v1i_yolov8",
             cfg="cfgs/cfg_y8s.yaml",
             project="Gestion_fila_Yolov8n_4_cam",
-            name="Yolov8m_",
+            name="Yolov8n_",
         )
 
 
