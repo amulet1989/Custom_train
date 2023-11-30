@@ -106,7 +106,7 @@ def main():
         comet_ml.init(api_key=api_key)
 
         model = YOLO(
-            "trained/yolov8m_4cam.pt"
+            "trained/CF_Pilar_tracking_Yolov8m_11_cam/Yolov8m_2/weights/best.pt"
         )  # yolov8m trained/yolov8m_6cam_augm - yolov8n_6cam
 
         model.train(
