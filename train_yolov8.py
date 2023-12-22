@@ -106,7 +106,7 @@ def main():
         comet_ml.init(api_key=api_key)
 
         model = YOLO(
-            "trained/yolov8m_4cam.pt"
+            "trained/yolov8n_4cam_imgsz704.pt"
         )  # yolov8m trained/yolov8m_6cam_augm - yolov8n_6cam
 
         model.train(
@@ -116,8 +116,8 @@ def main():
                 "data.yaml",
             ),  # Merged_Dataset/Augmented_Dataset - "Gestion_de_filas_4_camaras_v1i_yolov8",
             cfg="cfgs/cfg_y8s.yaml",
-            project="Gestion_fila_Yolov8m_4_cam",  # Gestion_fila_Yolov8m_4_cam - Gestion_fila_Yolov8n_4_cam -CF_Pilar_tracking_Yolov8m_11_cam
-            name="Yolov8m_",  # Yolov8m_ - Yolov8n_
+            project="cf-pilar-tracking-yolov8n-11-cam",  # Gestion_fila_Yolov8m_4_cam - Gestion_fila_Yolov8n_4_cam -CF_Pilar_tracking_Yolov8m_11_cam
+            name="Yolov8n_",  # Yolov8m_ - Yolov8n_
         )
 
 
