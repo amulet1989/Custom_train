@@ -182,6 +182,7 @@ private/
 wandb/
 GestionFila_Yolov8m/
 Gestion_fila_Yolov8n_4_cam/
+Gestion_fila_Yolov8m_4_cam/
 CF_Pilar_tracking_Yolov8m_11_cam/
 cf-pilar-tracking-yolov8n-11-cam/
 #*.pt
