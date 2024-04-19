@@ -187,3 +187,5 @@ CF_Pilar_tracking_Yolov8m_11_cam/
 #*.pt
 *.sh
 .cometml-runs
+trained/
+*.pt
