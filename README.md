@@ -20,6 +20,12 @@ Inside `.env` put:
 
 `COMET_API_KEY=<your api key>`
 
+And if you will use a AWS bucket
+
+`AWS_ACCESS_KEY = <your AWS public acces key>`
+
+`AWS_SECRET_KEY = <your AWS secret acces key>`
+
 ## Run `train_yolov8.py`,  `train_yolov9.py`, `train_yolov5.py` or `train_detr.py`
 ```bash
 python train_yolov9.py --not_download --dataset_dir_path ./dataset --dataset_name your_custom_dataset
