@@ -14,42 +14,42 @@ def main():
         "--not_download",
         default=True,
         action="store_false",
-        help="Si se desea descargar el dataset",
+        help="Si no se desea descargar el dataset",
     )
 
     parser.add_argument(
         "--not_augment",
         default=True,
         action="store_false",
-        help="Si se desea aplicar las transformaciones a los datos",
+        help="Si se desea aplicar data aumentación a los datos",
     )
 
     parser.add_argument(
         "--not_train",
         default=True,
         action="store_false",
-        help="Si no desesa entrenar el modelo",
+        help="Si no se desesa entrenar el modelo",
     )
 
     parser.add_argument(
         "--data_zip_path",
         default=config.DATA_ZIP_PATH,
         type=str,
-        help="Ruta al archivo zip",
+        help="Ruta al archivo zip que se descarga de AWS",
     )
 
     parser.add_argument(
         "--dataset_dir_path",
         default=config.DATASET_DIR_PATH,
         type=str,
-        help="Ruta al Dataser de entrenamiento",
+        help="Ruta al Dataset de entrenamiento",
     )
 
     parser.add_argument(
         "--dataset_name",
         default="Merged_Dataset",
         type=str,
-        help="Nombre del Datset de entrenamiento",
+        help="Nombre del Dataset de entrenamiento",
     )
 
     parser.add_argument(
@@ -70,14 +70,14 @@ def main():
         "--augmented_dir_path",
         default=config.DATA_AUMENTED_DIR_PATH,
         type=str,
-        help="Ruta al Dataset de entrenamiento",
+        help="Ruta al Dataset de entrenamiento aumentado",
     )
 
     parser.add_argument(
         "--aumented_for",
         default=5,
         type=int,
-        help="Veces que se aplicaran las transformaciones",
+        help="Veces que se aplicará la aumentación de datos",
     )
 
     args = parser.parse_args()
