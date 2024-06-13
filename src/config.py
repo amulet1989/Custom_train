@@ -13,6 +13,6 @@ DATA_YAML_PATH = os.path.join(DATASET_DIR_PATH, "Augmented_Dataset", "data.yaml"
 
 DATA_ZIP_PATH = os.path.join(DATASET_DIR_PATH, "data.zip")
 
-AWS_BUCKET = "probando-entrenar-una-red-en-aws"
+AWS_BUCKET = "datasetsymodelos"
 
-AWS_FILE_PATH = "Train_Datasets_MiniGO_products/Merged_Dataset.zip"
+AWS_FILE_PATH = "Pilar_productos_en_mano/Pilar_productos_en_mano_YOLOV8_704x576.zip"
