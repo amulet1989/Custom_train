@@ -42,7 +42,7 @@ def main():
         "--dataset_dir_path",
         default=config.DATASET_DIR_PATH,
         type=str,
-        help="Ruta al Dataser de entrenamiento",
+        help="Ruta al Dataset de entrenamiento",
     )
 
     parser.add_argument(
@@ -79,6 +79,24 @@ def main():
         type=int,
         help="Veces que se aplicaran las transformaciones",
     )
+    parser.add_argument(
+        "--model_link",
+        default="https://www.comet.com/api/asset/download?assetId=7c94626e68db40ba82c5a845de851147&experimentKey=7d1a10bcbb9a4e6287464baf9926ff7e",
+        type=str,
+        help="Link del modelo a descargar",
+    )
+    parser.add_argument(
+        "--model_path",
+        default="",
+        type=str,
+        help="path del modelo de ultralytics",
+    )
+    parser.add_argument(
+        "--project_name",
+        default="pruebas",
+        type=str,
+        help="Nombre del proyecto en Comet",
+    )
 
     args = parser.parse_args()
 
@@ -105,9 +123,14 @@ def main():
 
         comet_ml.init(api_key=api_key)
 
-        model = YOLO(
-            "trained/yolov8m_cf_4cam_verano_pies_v2.pt"
-        )  # yolov8m trained/yolov8m_6cam_augm - yolov8n_6cam
+        # Descargar modelo desde el link o del path por defecto
+        if args.model_path == "":
+            print("Downloading model from link")
+            model_path = download.download_model(args.model_link)
+        else:
+            model_path = args.model_path
+
+        model = YOLO(model_path)  # yolov8m trained/yolov8m_6cam_augm - yolov8n_6cam
 
         model.train(
             data=os.path.join(
@@ -116,7 +139,10 @@ def main():
                 "data.yaml",
             ),  # Merged_Dataset/Augmented_Dataset - "Gestion_de_filas_4_camaras_v1i_yolov8",
             cfg="cfgs/cfg_y8s.yaml",
-            project="Gestion_fila_Yolov8m_4_cam",  # Gestion_fila_Yolov8m_4_cam - Gestion_fila_Yolov8n_4_cam -CF_Pilar_tracking_Yolov8m_11_cam
+            project=args.project_name,
+            # CF_Pilar_tracking_Yolov8m_11_cam - Pilar_productos_en_mano
+            # Hands_Yolov8m - Linea_de_caja_Yolov8l_640x480-Pilar_gondolas_Yolov8n_15cam_704x576
+            # Gestion_fila_Yolov8m_9_cam - CF_Pilar_tracking_Yolov8m_11_cam
             name="Yolov8m_",  # Yolov8m_ - Yolov8n_
         )
 
