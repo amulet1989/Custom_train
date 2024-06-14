@@ -139,7 +139,10 @@ def main():
                 "data.yaml",
             ),  # Merged_Dataset/Augmented_Dataset - "Gestion_de_filas_4_camaras_v1i_yolov8",
             cfg="cfgs/cfg_y8s.yaml",
-            project=args.project_name,  # Gestion_fila_Yolov8m_4_cam - Gestion_fila_Yolov8n_4_cam -CF_Pilar_tracking_Yolov8m_11_cam - Pilar_productos_en_mano
+            project=args.project_name,
+            # CF_Pilar_tracking_Yolov8m_11_cam - Pilar_productos_en_mano
+            # Hands_Yolov8m - Linea_de_caja_Yolov8l_640x480-Pilar_gondolas_Yolov8n_15cam_704x576
+            # Gestion_fila_Yolov8m_9_cam - CF_Pilar_tracking_Yolov8m_11_cam
             name="Yolov8m_",  # Yolov8m_ - Yolov8n_
         )
 
