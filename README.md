@@ -102,6 +102,24 @@ python train_yolov9.py --not_download --dataset_dir_path ./dataset --dataset_nam
         type=int,
         help="Veces que se aplicará la aumentación de datos",
     )
+    parser.add_argument(
+        "--model_link",
+        default="https://www.comet.com/api/asset/download...",
+        type=str,
+        help="Link del modelo a descargar",
+    )
+    parser.add_argument(
+        "--model_path",
+        default="",
+        type=str,
+        help="path del modelo de ultralytics",
+    )
+    parser.add_argument(
+        "--project_name",
+        default="pruebas",
+        type=str,
+        help="Nombre del proyecto en Comet",
+    )
 ```
 ## Ejemplos de uso
 ### RUN local
