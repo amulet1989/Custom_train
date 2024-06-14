@@ -79,6 +79,24 @@ def main():
         type=int,
         help="Veces que se aplicaran las transformaciones",
     )
+    parser.add_argument(
+        "--model_link",
+        default="https://www.comet.com/api/asset/download?assetId=7c94626e68db40ba82c5a845de851147&experimentKey=7d1a10bcbb9a4e6287464baf9926ff7e",
+        type=str,
+        help="Link del modelo a descargar",
+    )
+    parser.add_argument(
+        "--model_path",
+        default="",
+        type=str,
+        help="path del modelo de ultralytics",
+    )
+    parser.add_argument(
+        "--project_name",
+        default="pruebas",
+        type=str,
+        help="Nombre del proyecto en Comet",
+    )
 
     args = parser.parse_args()
 
@@ -105,7 +123,14 @@ def main():
 
         comet_ml.init(api_key=api_key)
 
-        model = YOLO("yolov8m.pt")  # yolov8m trained/yolov8m_6cam_augm - yolov8n_6cam
+        # Descargar modelo desde el link o del path por defecto
+        if args.model_path == "":
+            print("Downloading model from link")
+            model_path = download.download_model(args.model_link)
+        else:
+            model_path = args.model_path
+
+        model = YOLO(model_path)  # yolov8m trained/yolov8m_6cam_augm - yolov8n_6cam
 
         model.train(
             data=os.path.join(
@@ -114,7 +139,7 @@ def main():
                 "data.yaml",
             ),  # Merged_Dataset/Augmented_Dataset - "Gestion_de_filas_4_camaras_v1i_yolov8",
             cfg="cfgs/cfg_y8s.yaml",
-            project="Pilar_productos_en_mano",  # Gestion_fila_Yolov8m_4_cam - Gestion_fila_Yolov8n_4_cam -CF_Pilar_tracking_Yolov8m_11_cam
+            project=args.project_name,  # Gestion_fila_Yolov8m_4_cam - Gestion_fila_Yolov8n_4_cam -CF_Pilar_tracking_Yolov8m_11_cam - Pilar_productos_en_mano
             name="Yolov8m_",  # Yolov8m_ - Yolov8n_
         )
 

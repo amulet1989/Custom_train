@@ -4,6 +4,7 @@ import zipfile
 import yaml
 from src import config
 from dotenv import load_dotenv
+import requests
 
 import logging
 
@@ -85,3 +86,29 @@ def download_from_local(input_dir: str, output_dir: str):
     )
 
     logging.info(f"Downloaded {input_dir} at {output_dir}")
+
+
+def download_model(model_link: str, output_dir: str = config.MODEL_DIR_PATH):
+    # create output directory if it doesn't exist
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    # define the output path
+    output_path = os.path.join(output_dir, "model.pt")
+
+    # download the model
+    logging.info(f"Downloading the model from {model_link} to {output_path}")
+
+    try:
+        response = requests.get(model_link, stream=True)
+        response.raise_for_status()
+        with open(output_path, "wb") as f:
+            for chunk in response.iter_content(chunk_size=8192):
+                if chunk:
+                    f.write(chunk)
+        logging.info(f"Downloaded model from {model_link} to {output_path}")
+    except requests.RequestException as e:
+        logging.error(f"Failed to download the model: {e}")
+        return None
+
+    return output_path

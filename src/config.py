@@ -5,6 +5,8 @@ HOME = str(pathlib.Path(__file__).parent.parent)
 
 DATASET_DIR_PATH = os.path.join(HOME, "dataset")
 
+MODEL_DIR_PATH = os.path.join(HOME, "trained")
+
 DATA_MERGED_DIR_PATH = os.path.join(DATASET_DIR_PATH, "Merged_Dataset")  # No
 
 DATA_AUMENTED_DIR_PATH = os.path.join(DATASET_DIR_PATH, "Augmented_Dataset")
