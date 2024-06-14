@@ -102,5 +102,19 @@ python train_yolov9.py --not_download --dataset_dir_path ./dataset --dataset_nam
         type=int,
         help="Veces que se aplicará la aumentación de datos",
     )
+```
+## Ejemplos de uso
+### RUN local
+python3 train_yolov8.py --not_download --dataset_dir_path /media/minigo/DATA/Hands_Dataset_dump --dataset_name final_hand_dataset_704x576
+
+### Run AWS
+- descargar modelo de un link
+
+python3 train_yolov8.py  --not_augment --model_link "https://www.comet.com/api/asset/download?assetId=7c94626e68db40ba82c5a845de851147&experimentKey=7d1a10bcbb9a4e6287464baf9926ff7e" --bucket_name datasetsymodelos --bucket_path CF_Vicente_Lopez_9cam/CF_Vicente_Lopez_9cam_640x480_v5_YOLOV8.zip --dataset_name CF_Vicente_Lopez_9cam_640x480_v5_YOLOV8 --project_name Gestion_fila_Yolov8m_9_cam
+
+- descargar un modleo bas ede ultralytics
+
+python3 train_yolov8.py  --not_augment --model_path "yolov8m.pt" --bucket_name datasetsymodelos --bucket_path CF_Vicente_Lopez_9cam/CF_Vicente_Lopez_9cam_640x480_v5_YOLOV8.zip --dataset_name CF_Vicente_Lopez_9cam_640x480_v5_YOLOV8 --project_name Gestion_fila_Yolov8m_9_cam
+
 
     
