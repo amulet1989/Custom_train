@@ -14,28 +14,28 @@ def main():
         "--not_download",
         default=True,
         action="store_false",
-        help="Si no se desea descargar el dataset",
+        help="Si se desea descargar el dataset",
     )
 
     parser.add_argument(
         "--not_augment",
         default=True,
         action="store_false",
-        help="Si se desea aplicar data aumentación a los datos",
+        help="Si se desea aplicar las transformaciones a los datos",
     )
 
     parser.add_argument(
         "--not_train",
         default=True,
         action="store_false",
-        help="Si no se desesa entrenar el modelo",
+        help="Si no desesa entrenar el modelo",
     )
 
     parser.add_argument(
         "--data_zip_path",
         default=config.DATA_ZIP_PATH,
         type=str,
-        help="Ruta al archivo zip que se descarga de AWS",
+        help="Ruta al archivo zip",
     )
 
     parser.add_argument(
@@ -49,7 +49,7 @@ def main():
         "--dataset_name",
         default="Merged_Dataset",
         type=str,
-        help="Nombre del Dataset de entrenamiento",
+        help="Nombre del Datset de entrenamiento",
     )
 
     parser.add_argument(
@@ -70,18 +70,37 @@ def main():
         "--augmented_dir_path",
         default=config.DATA_AUMENTED_DIR_PATH,
         type=str,
-        help="Ruta al Dataset de entrenamiento aumentado",
+        help="Ruta al Dataset de entrenamiento",
     )
 
     parser.add_argument(
         "--aumented_for",
         default=5,
         type=int,
-        help="Veces que se aplicará la aumentación de datos",
+        help="Veces que se aplicaran las transformaciones",
+    )
+    parser.add_argument(
+        "--model_link",
+        default="https://www.comet.com/api/asset/download?assetId=7c94626e68db40ba82c5a845de851147&experimentKey=7d1a10bcbb9a4e6287464baf9926ff7e",
+        type=str,
+        help="Link del modelo a descargar",
+    )
+    parser.add_argument(
+        "--model_path",
+        default="",
+        type=str,
+        help="path del modelo de ultralytics",
+    )
+    parser.add_argument(
+        "--project_name",
+        default="pruebas",
+        type=str,
+        help="Nombre del proyecto en Comet",
     )
 
     args = parser.parse_args()
 
+    # Download datset
     # Download datset
     if args.not_download:
         # download.download_from_local(args.data_zip_path, args.dataset_dir_path)
@@ -105,7 +124,14 @@ def main():
 
         comet_ml.init(api_key=api_key)
 
-        model = YOLO("yolov9c.pt")  # yolov8m trained/yolov8m_6cam_augm - yolov8n_6cam
+        # Descargar modelo desde el link o del path por defecto
+        if args.model_path == "":
+            print("Downloading model from link")
+            model_path = download.download_model(args.model_link)
+        else:
+            model_path = args.model_path
+
+        model = YOLO(model_path)  # yolov9c.pt
 
         model.train(
             data=os.path.join(
@@ -114,8 +140,11 @@ def main():
                 "data.yaml",
             ),  # Merged_Dataset/Augmented_Dataset - "Gestion_de_filas_4_camaras_v1i_yolov8",
             cfg="cfgs/cfg_y9s.yaml",
-            project="Gestion_fila_Yolov9c_9_cam",  # Gestion_fila_Yolov8m_4_cam - Gestion_fila_Yolov8n_4_cam -CF_Pilar_tracking_Yolov8m_11_cam
-            name="Yolov9c_",  # Yolov8m_ - Yolov8n_
+            project=args.project_name,
+            # CF_Pilar_tracking_Yolov8m_11_cam - Pilar_productos_en_mano
+            # Hands_Yolov8m - Linea_de_caja_Yolov8l_640x480-Pilar_gondolas_Yolov8n_15cam_704x576
+            # Gestion_fila_Yolov8m_9_cam - CF_Pilar_tracking_Yolov8m_11_cam
+            name="Yolov9c_",
         )
 
 
