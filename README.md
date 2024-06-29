@@ -33,32 +33,36 @@ python train_yolov9.py --not_download --model_path "yolov8m.pt" --dataset_dir_pa
 
 ## Some arguments to use:
 ```python
+    parser = argparse.ArgumentParser(
+        description="Pipeline para procesar videos y detección de objetos"
+    )
+
     parser.add_argument(
         "--not_download",
         default=True,
         action="store_false",
-        help="Si no se desea descargar el dataset",
+        help="Si se desea descargar el dataset",
     )
 
     parser.add_argument(
         "--not_augment",
         default=True,
         action="store_false",
-        help="Si se desea aplicar data aumentación a los datos",
+        help="Si se desea aplicar las transformaciones a los datos",
     )
 
     parser.add_argument(
         "--not_train",
         default=True,
         action="store_false",
-        help="Si no se desesa entrenar el modelo",
+        help="Si no desesa entrenar el modelo",
     )
 
     parser.add_argument(
         "--data_zip_path",
         default=config.DATA_ZIP_PATH,
         type=str,
-        help="Ruta al archivo zip que se descarga de AWS",
+        help="Ruta al archivo zip",
     )
 
     parser.add_argument(
@@ -72,7 +76,7 @@ python train_yolov9.py --not_download --model_path "yolov8m.pt" --dataset_dir_pa
         "--dataset_name",
         default="Merged_Dataset",
         type=str,
-        help="Nombre del Dataset de entrenamiento",
+        help="Nombre del Datset de entrenamiento",
     )
 
     parser.add_argument(
@@ -93,18 +97,18 @@ python train_yolov9.py --not_download --model_path "yolov8m.pt" --dataset_dir_pa
         "--augmented_dir_path",
         default=config.DATA_AUMENTED_DIR_PATH,
         type=str,
-        help="Ruta al Dataset de entrenamiento aumentado",
+        help="Ruta al Dataset de entrenamiento",
     )
 
     parser.add_argument(
         "--aumented_for",
         default=5,
         type=int,
-        help="Veces que se aplicará la aumentación de datos",
+        help="Veces que se aplicaran las transformaciones",
     )
     parser.add_argument(
         "--model_link",
-        default="https://www.comet.com/api/asset/download...",
+        default="https://www.comet.com/api/asset/download?assetId=7c94626e68db40ba82c5a845de851147&experimentKey=7d1a10bcbb9a4e6287464baf9926ff7e",
         type=str,
         help="Link del modelo a descargar",
     )
