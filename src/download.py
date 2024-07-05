@@ -30,6 +30,7 @@ def update_data_yaml(data_yaml_path, train_dir, val_dir):
     # Escribir el archivo data.yaml con las rutas actualizadas
     with open(data_yaml_path, "w") as file:
         yaml.dump(data, file)
+    logging.info("data.yaml modificated")
 
 
 def download_from_s3(
@@ -56,7 +57,11 @@ def download_from_s3(
 
     # updated train and val directories
     # get unzipped folder name
-    folder_name = os.listdir(local_dir)[0]
+    # folder_name = os.listdir(local_dir)[0]
+
+    # get unzipped folder name from the zip file name
+    folder_name = s3_file.split(".")[0]
+
     update_data_yaml(
         os.path.join(local_dir, folder_name, "data.yaml"),
         os.path.join(local_dir, folder_name, "train"),
