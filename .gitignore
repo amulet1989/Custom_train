@@ -187,6 +187,7 @@ Gestion_fila_Yolov8n_4_cam/
 Gestion_fila_Yolov8m_4_cam/
 CF_Pilar_tracking_Yolov8m_11_cam/
 Gestion_fila_Yolov8m_9_cam/
+Pilar_person_all_cam_Yolov8m_704x576/
 #*.pt
 *.sh
 .cometml-runs
