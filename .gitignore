@@ -190,6 +190,7 @@ Gestion_fila_Yolov8m_9_cam/
 Pilar_person_all_cam_Yolov8m_704x576/
 Linea_de_caja_Yolov8m_640x480/
 Pilar_productos_en_mano/
+Productos_cinta_yolov8seg/
 #*.pt
 *.sh
 .cometml-runs
