@@ -7,8 +7,8 @@ mode: train  # (str) YOLO mode, i.e. train, val, predict, export, track, benchma
 # Train settings -------------------------------------------------------------------------------------------------------
 model:  # (str, optional) path to model file, i.e. yolov8n.pt, yolov8n.yaml
 data:  # (str, optional) path to data file, i.e. coco128.yaml
-epochs: 50  # (int) number of epochs to train for
-patience: 40  # (int) epochs to wait for no observable improvement for early stopping of training
+epochs: 100  # (int) number of epochs to train for
+patience: 50  # (int) epochs to wait for no observable improvement for early stopping of training
 batch: 0.8  # (int) number of images per batch (-1 for AutoBatch)
 imgsz: 640 # (int | list) input images size as int for train and val modes, or list[w,h] for predict and export modes
 save: True  # (bool) save train checkpoints and predict results
@@ -104,7 +104,7 @@ scale: 0.5  # (float) image scale (+/- gain)
 shear: 0.0  # (float) image shear (+/- deg)
 perspective: 0.0  # (float) image perspective (+/- fraction), range 0-0.001
 flipud: 0.5  # (float) image flip up-down (probability) default 0.0
-fliplr: 0.0  # (float) image flip left-right (probability) default 0.5
+fliplr: 0.5  # (float) image flip left-right (probability) default 0.5
 mosaic: 1.0  # (float) image mosaic (probability) default 1.0
 mixup: 0.5  # (float) image mixup (probability) default 0.0
 copy_paste: 0.0  # (float) segment copy-paste (probability)
