@@ -7,8 +7,8 @@ mode: train  # (str) YOLO mode, i.e. train, val, predict, export, track, benchma
 # Train settings -------------------------------------------------------------------------------------------------------
 model:  # (str, optional) path to model file, i.e. yolov8n.pt, yolov8n.yaml
 data:  # (str, optional) path to data file, i.e. coco128.yaml
-epochs: 100  # (int) number of epochs to train for
-patience: 50  # (int) epochs to wait for no observable improvement for early stopping of training
+epochs: 120  # (int) number of epochs to train for
+patience: 60  # (int) epochs to wait for no observable improvement for early stopping of training
 batch: 0.8  # (int) number of images per batch (-1 for AutoBatch)
 imgsz: 640 # (int | list) input images size as int for train and val modes, or list[w,h] for predict and export modes
 save: True  # (bool) save train checkpoints and predict results
@@ -35,7 +35,7 @@ profile: False  # (bool) profile ONNX and TensorRT speeds during training for lo
 freeze: None  # (int | list, optional) freeze first n layers, or freeze list of layer indices during training
 # Segmentation
 overlap_mask: True  # (bool) masks should overlap during training (segment train only)
-mask_ratio: 4  # (int) mask downsample ratio (segment train only)
+mask_ratio: 1  # (int) mask downsample ratio (segment train only) default 4
 # Classification
 dropout: 0.0  # (float) use dropout regularization (classify train only)
 
@@ -108,6 +108,7 @@ fliplr: 0.5  # (float) image flip left-right (probability) default 0.5
 mosaic: 1.0  # (float) image mosaic (probability) default 1.0
 mixup: 0.5  # (float) image mixup (probability) default 0.0
 copy_paste: 0.0  # (float) segment copy-paste (probability)
+bgr: 0.1 # Flips the image channels from RGB to BGR with the specified probability, useful for increasing robustness to incorrect channel ordering.
 
 erasing: 0.4 # Randomly erases a portion of the image during classification training, encouraging the model to focus on less obvious features for recognition.
 crop_fraction: 1.0 # Crops the classification image to a fraction of its size to emphasize central features and adapt to object scales, reducing background distractions.
