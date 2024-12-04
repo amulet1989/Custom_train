@@ -192,6 +192,7 @@ Linea_de_caja_Yolov8m_640x480/
 Pilar_productos_en_mano/
 Productos_cinta_yolov8seg/
 Productos_en_mano_HD/
+Raffin_person_all_cam/
 #*.pt
 *.sh
 .cometml-runs
