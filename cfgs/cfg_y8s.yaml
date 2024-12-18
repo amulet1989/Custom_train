@@ -15,7 +15,7 @@ save: True  # (bool) save train checkpoints and predict results
 save_period: -1 # (int) Save checkpoint every x epochs (disabled if < 1)
 cache: False  # (bool) True/ram, disk or False. Use cache for data loading
 device: 0  # (int | str | list, optional) device to run on, i.e. cuda device=0 or device=0,1,2,3 or device=cpu
-workers: 8  # (int) number of worker threads for data loading (per RANK if DDP) default 8
+workers: 4  # (int) number of worker threads for data loading (per RANK if DDP) default 8
 project:  # (str, optional) project name
 name:  # (str, optional) experiment name, results saved to 'project/name' directory
 exist_ok: False  # (bool) whether to overwrite existing experiment
@@ -106,7 +106,7 @@ perspective: 0.0  # (float) image perspective (+/- fraction), range 0-0.001
 flipud: 0.0  # (float) image flip up-down (probability) default 0.0
 fliplr: 0.0  # (float) image flip left-right (probability) default 0.5
 mosaic: 1.0  # (float) image mosaic (probability) default 1.0
-mixup: 0.5  # (float) image mixup (probability) default 0.0
+mixup: 0.0  # (float) image mixup (probability) default 0.0
 copy_paste: 0.0  # (float) segment copy-paste (probability)
 
 erasing: 0.4 # Randomly erases a portion of the image during classification training, encouraging the model to focus on less obvious features for recognition.
