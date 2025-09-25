@@ -194,6 +194,7 @@ Productos_cinta_yolov8seg/
 Productos_en_mano_HD/
 Raffin_person_all_cam/
 Oracle_person_all_cam/
+Oracle_product_persons/
 #*.pt
 *.sh
 .cometml-runs
