@@ -106,9 +106,9 @@ perspective: 0.0  # (float) image perspective (+/- fraction), range 0-0.001
 flipud: 0.5  # (float) image flip up-down (probability) default 0.0
 fliplr: 0.0  # (float) image flip left-right (probability) default 0.5
 mosaic: 1.0  # (float) image mosaic (probability) default 1.0
-mixup: 0.25  # (float) image mixup (probability) default 0.0
+mixup: 0.35  # (float) image mixup (probability) default 0.0
 copy_paste: 0.0  # (float) segment copy-paste (probability)
-bgr: 0.1 # Flips the image channels from RGB to BGR with the specified probability, useful for increasing robustness to incorrect channel ordering.
+bgr: 0.5 # Flips the image channels from RGB to BGR with the specified probability, useful for increasing robustness to incorrect channel ordering.
 
 erasing: 0.4 # Randomly erases a portion of the image during classification training, encouraging the model to focus on less obvious features for recognition.
 crop_fraction: 1.0 # Crops the classification image to a fraction of its size to emphasize central features and adapt to object scales, reducing background distractions.

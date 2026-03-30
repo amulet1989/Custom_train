@@ -195,6 +195,8 @@ Productos_en_mano_HD/
 Raffin_person_all_cam/
 Oracle_person_all_cam/
 Oracle_product_persons/
+Lonvill_palet_yolov11s
+Pandora_person_Yolov8m/
 #*.pt
 *.sh
 .cometml-runs
